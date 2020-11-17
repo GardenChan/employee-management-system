@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myharbour.ems_thymeleaf.dao.EmpDAO">
+<!--查询所有员工-->
+    <select id="findAll" resultType="com.myharbour.ems_thymeleaf.entity.Emp">
+        select id,name,salary,age,bir from t_emp
+    </select>
+<!--保存员工-->
+    <insert id="save" parameterType="com.myharbour.ems_thymeleaf.entity.Emp">
+        insert into t_emp values(#{id},#{name},#{salary},#{age},#{bir})
+    </insert>
+<!--删除员工-->
+    <delete id="delete" parameterType="String">
+        delete from t_emp where id = #{id}
+    </delete>
+
+<!--查找员工-->
+    <select id="find" parameterType="String" resultType="com.myharbour.ems_thymeleaf.entity.Emp">
+        select id,name,salary,age,bir from t_emp where id = #{id}
+    </select>
+
+<!--更新员工-->
+    <update id="update" parameterType="com.myharbour.ems_thymeleaf.entity.Emp">
+        update t_emp set name=#{name},salary=#{salary},age=#{age},bir=#{bir} where id =#{id}
+    </update>
+
+
+</mapper>
